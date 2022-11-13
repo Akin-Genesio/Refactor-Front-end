@@ -236,7 +236,7 @@ export function Login(){
         <View>
             <StatusBar
                 barStyle="light-content"
-                backgroundColor="transparent"
+                //backgroundColor="red"
                 translucent
             />
                     <View style={styles.header}>
