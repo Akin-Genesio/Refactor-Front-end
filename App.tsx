@@ -35,7 +35,15 @@ export default function App() {
   }
 
   return(
-    <Login/>
+    <>
+      <StatusBar
+        //barStyle="light-content"
+        //backgroundColor="red"
+        translucent = {true}
+      />
+      <Login/>
+    </>
+    
   )
 
 }

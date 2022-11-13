@@ -3,8 +3,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import React, { useRef, useState } from 'react';
 import {
     Alert,
-    Dimensions, StatusBar,
-    StyleSheet,
+    Dimensions, StyleSheet,
     Text,
     TextInput,
     TouchableOpacity,
@@ -234,11 +233,7 @@ export function Login(){
 
     return(
         <View>
-            <StatusBar
-                barStyle="light-content"
-                //backgroundColor="red"
-                translucent
-            />
+            
                     <View style={styles.header}>
                         <Text style={styles.welcome}>Bem-Vindo ao</Text>
                         <Text style={styles.appName}>MoniPaEp</Text>
