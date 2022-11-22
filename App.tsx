@@ -14,6 +14,7 @@ import {
   Inter_800ExtraBold,
   Inter_900Black, useFonts
 } from '@expo-google-fonts/inter';
+import { Routes } from './src/routes';
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -41,7 +42,7 @@ export default function App() {
         //backgroundColor="red"
         translucent = {true}
       />
-      <Login/>
+      <Routes/>
     </>
     
   )
