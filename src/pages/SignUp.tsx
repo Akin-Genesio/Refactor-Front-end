@@ -15,9 +15,10 @@ import { TextInputMask } from 'react-native-masked-text';
 import { HeaderWithOutMenu} from '../Components';
 import { BlueButton } from '../Components/BlueButton';
 import {Picker} from '@react-native-picker/picker';
-import api from '../services/api';
+//import api from '../services/api';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+import { Login } from './Login';
 
 export function SignUp(){
     //Seting useState and useRef to email
@@ -549,7 +550,8 @@ export function SignUp(){
         }
 
         //Submit data to database
-        try{
+        /**
+         * try{
             const response = await api.post('/patients/signup',{
                 email: email,
                 name: name,
@@ -587,6 +589,18 @@ export function SignUp(){
                 ]
             )
         }
+         */
+        Alert.alert(
+            "Cadastro Efetuado",
+            "Seu cadastro foi concluido com sucesso",
+            [
+                {
+                    text: "Ok",
+                    onPress: () => (handleLogin())
+                }
+            ]
+        )
+        console.log("Seria feito o cadastro")
 
         return
     }

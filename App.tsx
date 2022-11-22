@@ -1,8 +1,10 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import { Login } from './src/pages';
 import AppLoading from 'expo-app-loading';
 import * as SplashScreen from 'expo-splash-screen';
+import {Routes} from './src/routes'
 import {
   Inter_100Thin,
   Inter_200ExtraLight,
@@ -14,7 +16,7 @@ import {
   Inter_800ExtraBold,
   Inter_900Black, useFonts
 } from '@expo-google-fonts/inter';
-import { Routes } from './src/routes';
+
 
 export default function App() {
   let [fontsLoaded] = useFonts({

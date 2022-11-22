@@ -1,4 +1,5 @@
 import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 //import { useNavigation } from '@react-navigation/core'
 import React, { useRef, useState } from 'react';
 import {
@@ -14,6 +15,7 @@ import { BlueButton } from '../Components';
 //import { useAuth } from '../contexts/Auth';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+import { SignUp } from './SignUp';
 
 export function Login(){
     //Seting function singIn with use Context
@@ -32,7 +34,7 @@ export function Login(){
     const passwordRef = useRef(null)
 
     //Creating const for navigation
-    //const navigation = useNavigation()
+    const navigation = useNavigation()
 
     //Functions handle for CPF
     function handleInputCPFBlur(){
@@ -201,7 +203,7 @@ export function Login(){
 
         //Submit data to database
         try{            
-            const response = await signIn(cpfRef?.current.getRawValue(), password)
+            //const response = await signIn(cpfRef?.current.getRawValue(), password)
             /*
             console.log(user)
             console.log("Pós Obj")
@@ -227,13 +229,13 @@ export function Login(){
     }
     
     function handleSignUp(){
-        //navigation.navigate('SignUP')
-        console.log("Login seria efetuado")
+        navigation.navigate('SignUp')
+
     }
 
     return(
         <View>
-            
+                
                     <View style={styles.header}>
                         <Text style={styles.welcome}>Bem-Vindo ao</Text>
                         <Text style={styles.appName}>MoniPaEp</Text>
