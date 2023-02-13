@@ -224,13 +224,14 @@ export function Login(){
             )
         }catch(error){
             
+            
         }
 
         return
     }
     
     function handleSignUp(){
-        navigation.navigate('SignUp')
+        navigation.navigate('SignUP')
 
     }
 

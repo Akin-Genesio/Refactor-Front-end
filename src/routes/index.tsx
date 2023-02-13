@@ -12,7 +12,8 @@ import AppRoutes from './app.routes'
 export function Routes(){
     return(
         <NavigationContainer>
-           <AuthRoutes/> 
+            <AuthRoutes/>
         </NavigationContainer>
+         
     )
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack'
 import colors from '../styles/colors';
-import { Login, Profile, SignUp, Symtopms } from '../pages';
+import { Login, SignUp } from '../pages';
 
 const stackRoutes = createStackNavigator()
 
@@ -24,15 +24,6 @@ const AppRoutes: React.FC = () => (
             component={SignUp}
         />
 
-        <stackRoutes.Screen
-            name = "Profile"
-            component={Profile}
-        />
-
-        <stackRoutes.Screen
-            name = "Symptoms"
-            component={Symtopms}
-        />
     </stackRoutes.Navigator>
 )
 
