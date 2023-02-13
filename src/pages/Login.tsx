@@ -8,7 +8,8 @@ import {
     Text,
     TextInput,
     TouchableOpacity,
-    View
+    View,
+    KeyboardAvoidingView
 } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
 import { BlueButton } from '../Components';
@@ -241,99 +242,102 @@ export function Login(){
                         <Text style={styles.appName}>MoniPaEp</Text>
                     </View>
                 
-                    <View style={styles.container}>
-                        <View style={styles.warning}>
-                            <Text style={styles.warningText}>* Obrigatório </Text>
-                        </View>
-                        <View style={[
-                                styles.inputField,
-                                (isCPFFocused || isCPFFilled) && 
-                                {borderColor: colors.blue}
-                            ]}
-                        >
-                            <TextInputMask
-                                accessible={true}
-                                placeholder="Digite seu CPF"
-                                type = {'cpf'}
-                                value ={cpf}
-                                style={styles.input}
-                                onBlur={handleInputCPFBlur}
-                                onFocus = {handleInputCPFFocus}
-                                onChangeText = {handleInputCPFChange}
-                                ref={cpfRef}
-                                
-                            />
-                            <MaterialIcons 
-                                name="person-outline" 
-                                size={24}
-
-                                color = "gray"
-                                style={[
-                                    styles.Icon,
-                                    (isCPFFocused || isCPFFilled) && 
-                                    {color: colors.blue}
-                                ]}    
-                            />
-                        </View>
-                        <View style={styles.warning}>
+                    <KeyboardAvoidingView style={styles.container}>
+                        <View style={styles.container}>
+                            <View style={styles.warning}>
                                 <Text style={styles.warningText}>* Obrigatório </Text>
                             </View>
-                        <View style={[
-                                styles.inputField,
-                                (isPasswordFocused || isPasswordFilled) && 
-                                {borderColor: colors.blue}
-                            ]}
-                        >
-                            <TextInput
-                                accessible={true}
-                                placeholder="Digite sua senha"
-                                style={styles.input}
-                                value = {password}
-                                textContentType = 'newPassword'
-                                secureTextEntry = {true}
-                                onBlur={handleInputPasswordBlur}
-                                onFocus = {handleInputPasswordFocus}
-                                onChangeText = {handleInputPasswordChange}
-                            />
-                            <MaterialIcons 
-                                name="lock" 
-                                size={24}
-
-                                color = "gray"
-                                style={[
-                                    styles.Icon,
-                                    (isPasswordFocused || isPasswordFilled) && 
-                                    {color: colors.blue}
-                                ]}    
-                            />
-                        </View>
-                        <View style={styles.footer}>
-                            <TouchableOpacity
-                                accessible={true}
-                                accessibilityLabel= "Botão. Clique caso tenha esquecido a senha"
+                            <View style={[
+                                    styles.inputField,
+                                    (isCPFFocused || isCPFFilled) && 
+                                    {borderColor: colors.blue}
+                                ]}
                             >
-                                <Text style={styles.textLink}>Esqueceu sua senha?</Text>
-                            </TouchableOpacity>
-                            <View style={styles.button}>
-                                <BlueButton
+                                <TextInputMask
                                     accessible={true}
-                                    accessibilityLabel= "Botão. Clique para efetuar o login"
-                                    title="Entrar"
-                                    onPress={Check}
+                                    placeholder="Digite seu CPF"
+                                    type = {'cpf'}
+                                    value ={cpf}
+                                    style={styles.input}
+                                    onBlur={handleInputCPFBlur}
+                                    onFocus = {handleInputCPFFocus}
+                                    onChangeText = {handleInputCPFChange}
+                                    ref={cpfRef}
+                                    
+                                />
+                                <MaterialIcons 
+                                    name="person-outline" 
+                                    size={24}
+
+                                    color = "gray"
+                                    style={[
+                                        styles.Icon,
+                                        (isCPFFocused || isCPFFilled) && 
+                                        {color: colors.blue}
+                                    ]}    
                                 />
                             </View>
-                            <View style={styles.textAndLink}>
-                                <Text style={styles.text}>Não possui uma conta? </Text>
+                            <View style={styles.warning}>
+                                    <Text style={styles.warningText}>* Obrigatório </Text>
+                                </View>
+                            <View style={[
+                                    styles.inputField,
+                                    (isPasswordFocused || isPasswordFilled) && 
+                                    {borderColor: colors.blue}
+                                ]}
+                            >
+                                <TextInput
+                                    accessible={true}
+                                    placeholder="Digite sua senha"
+                                    style={styles.input}
+                                    value = {password}
+                                    textContentType = 'newPassword'
+                                    secureTextEntry = {true}
+                                    onBlur={handleInputPasswordBlur}
+                                    onFocus = {handleInputPasswordFocus}
+                                    onChangeText = {handleInputPasswordChange}
+                                />
+                                <MaterialIcons 
+                                    name="lock" 
+                                    size={24}
+
+                                    color = "gray"
+                                    style={[
+                                        styles.Icon,
+                                        (isPasswordFocused || isPasswordFilled) && 
+                                        {color: colors.blue}
+                                    ]}    
+                                />
+                            </View>
+                            <View style={styles.footer}>
                                 <TouchableOpacity
                                     accessible={true}
-                                    accessibilityLabel= "Botão. Clique para criar conta"
-                                    onPress={handleSignUp}
+                                    accessibilityLabel= "Botão. Clique caso tenha esquecido a senha"
                                 >
-                                    <Text style={styles.textLink}>Cadastre-se</Text>
+                                    <Text style={styles.textLink}>Esqueceu sua senha?</Text>
                                 </TouchableOpacity>
+                                <View style={styles.button}>
+                                    <BlueButton
+                                        accessible={true}
+                                        accessibilityLabel= "Botão. Clique para efetuar o login"
+                                        title="Entrar"
+                                        onPress={Check}
+                                    />
+                                </View>
+                                <View style={styles.textAndLink}>
+                                    <Text style={styles.text}>Não possui uma conta? </Text>
+                                    <TouchableOpacity
+                                        accessible={true}
+                                        accessibilityLabel= "Botão. Clique para criar conta"
+                                        onPress={handleSignUp}
+                                    >
+                                        <Text style={styles.textLink}>Cadastre-se</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                         </View>
-                    </View>
+
+                    </KeyboardAvoidingView>
         </View>
                 
     )

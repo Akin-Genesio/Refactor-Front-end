@@ -19,6 +19,7 @@ import {Picker} from '@react-native-picker/picker';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { Login } from './Login';
+import { SafeAreaView } from '../Components/SafeAreaView';
 
 export function SignUp(){
     //Seting useState and useRef to email
@@ -606,9 +607,10 @@ export function SignUp(){
     }
 
     return(
-        <View 
+        <SafeAreaView 
             accessible={true}
             accessibilityLabel="Página de Cadastro, insira seus dados para criar uma conta"
+            
         >
             
             <ScrollView scrollEnabled = {true}>
@@ -1185,7 +1187,7 @@ export function SignUp(){
                     
                 </KeyboardAvoidingView>
             </ScrollView>       
-        </View>
+        </SafeAreaView>
     )
 }
 
