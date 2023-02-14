@@ -42,7 +42,7 @@ export function Profile(){
     }
 
     function handleConfig(){
-        //navigation.navigate('Config')
+        navigation.navigate('Config')
     }
 
     return(
