@@ -33,8 +33,8 @@ export function Symtopms(){
     
     useEffect(() => {
         async function fetchSymptoms(){
-            //console.log("search: "+search)
-            const response = await api.get("/symptom");
+            console.log("search: "+search)
+            const response = await api.get("/symptom", {params: {symptom: search}});
             setSymptoms(response.data.symptoms)
 
         }
@@ -45,6 +45,7 @@ export function Symtopms(){
     function handleProfile(){
         navigation.navigate('Profile')
     }
+    
     //Functions handle for Search
     function handleInputSearchBlur(){
         setIsSearchFocused(false)
@@ -172,6 +173,8 @@ export function Symtopms(){
                             onPress={handleSymptom}
                         />
                     </View>
+                    
+
                 </View>
         </SafeAreaView>
     )

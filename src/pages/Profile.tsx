@@ -11,7 +11,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 
 import patientImg from '../assets/patientImg.png';
-import { FAQ, GreenButton, HeaderSimple, PatientStatus } from '../Components';
+import { FAQ, GreenButton, HeaderSimple, HeaderWithOutGoBack, PatientStatus } from '../Components';
 import { useAuth } from '../contexts/Auth';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -50,7 +50,7 @@ export function Profile(){
             accessible={true}
             accessibilityLabel="Página de perfil"
         >
-            <HeaderSimple
+            <HeaderWithOutGoBack
                 titleScreen= {`Bem vindo(a) ${user?.name.split(' ')[0]}`}
             />
             <View
