@@ -9,10 +9,13 @@ import {
     TextInput,
     TouchableOpacity,
     View,
+    Keyboard,
     KeyboardAvoidingView
 } from 'react-native';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import { TextInputMask } from 'react-native-masked-text';
 import { BlueButton } from '../Components';
+import { SafeAreaView } from '../Components/SafeAreaView';
 import { useAuth } from '../contexts/Auth';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -236,14 +239,23 @@ export function Login(){
     }
 
     return(
-        <View>
+        <SafeAreaView 
+            accessible={true}
+            accessibilityLabel="Página de Login, insira seus dados para entrar na sua conta"
+        >
+            <KeyboardAvoidingView  
+                style={styles.container}
+                //behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+            >
+                <TouchableWithoutFeedback
+                    onPress={Keyboard.dismiss}
+                >
                 
                     <View style={styles.header}>
                         <Text style={styles.welcome}>Bem-Vindo ao</Text>
                         <Text style={styles.appName}>MoniPaEp</Text>
                     </View>
                 
-                    <KeyboardAvoidingView style={styles.container}>
                         <View style={styles.container}>
                             <View style={styles.warning}>
                                 <Text style={styles.warningText}>* Obrigatório </Text>
@@ -337,9 +349,9 @@ export function Login(){
                                 </View>
                             </View>
                         </View>
-
-                    </KeyboardAvoidingView>
-        </View>
+                    </TouchableWithoutFeedback>
+            </KeyboardAvoidingView>
+        </SafeAreaView>
                 
     )
 }
