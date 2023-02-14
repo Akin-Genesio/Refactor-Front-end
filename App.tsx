@@ -1,10 +1,10 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
+import Routes from './src/routes';
 import { StyleSheet, Text, View } from 'react-native';
 import { Login } from './src/pages';
 import AppLoading from 'expo-app-loading';
 import * as SplashScreen from 'expo-splash-screen';
-import {Routes} from './src/routes'
 import {
   Inter_100Thin,
   Inter_200ExtraLight,
@@ -16,6 +16,9 @@ import {
   Inter_800ExtraBold,
   Inter_900Black, useFonts
 } from '@expo-google-fonts/inter';
+import { NavigationContainer } from '@react-navigation/native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {AuthProvider} from './src/contexts/Auth'
 
 
 export default function App() {
@@ -38,14 +41,14 @@ export default function App() {
   }
 
   return(
-    <>
-      <StatusBar
-        //barStyle="light-content"
-        //backgroundColor="red"
-        translucent = {true}
-      />
-      <Routes/>
-    </>
+    <AuthProvider>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Routes/>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </AuthProvider>
+    
     
   )
 

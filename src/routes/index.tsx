@@ -1,19 +1,15 @@
-import React, {useContext} from 'react';
-import {NavigationContainer} from '@react-navigation/native'
-import {View, ActivityIndicator, StyleSheet} from 'react-native'
+import React from 'react';
 
-import {useAuth} from '../contexts/Auth'
+import { useAuth } from '../contexts/Auth';
 
-import StackRoutes from './stack.routes'
-import AuthRoutes from './auth.routes'
-import AppRoutes from './app.routes'
+import AppRoutes from './app.routes';
+import AuthRoutes from './auth.routes';
 
 
-export function Routes(){
-    return(
-        <NavigationContainer>
-            <AuthRoutes/>
-        </NavigationContainer>
-         
-    )
+const Routes = () =>{
+    const {signed} = useAuth() 
+    
+    return signed? <AppRoutes/> : <AuthRoutes/>
 }
+
+export default Routes;

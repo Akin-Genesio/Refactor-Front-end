@@ -13,14 +13,14 @@ import {
 } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
 import { BlueButton } from '../Components';
-//import { useAuth } from '../contexts/Auth';
+import { useAuth } from '../contexts/Auth';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
 import { SignUp } from './SignUp';
 
 export function Login(){
     //Seting function singIn with use Context
-    //const {signIn, signed} = useAuth()
+    const {signIn, signed} = useAuth()
 
     //Seting useState and useRef to CPF
     const[isCPFFocused, setIsCPFFocused] = useState(false)
@@ -204,7 +204,7 @@ export function Login(){
 
         //Submit data to database
         try{            
-            //const response = await signIn(cpfRef?.current.getRawValue(), password)
+            const response = await signIn(cpfRef?.current.getRawValue(), password)
             /*
             console.log(user)
             console.log("Pós Obj")
