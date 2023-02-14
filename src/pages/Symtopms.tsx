@@ -34,7 +34,7 @@ export function Symtopms(){
     useEffect(() => {
         async function fetchSymptoms(){
             //console.log("search: "+search)
-            const response = await api.get("/symptom", {params: {symptom: search}});
+            const response = await api.get("/symptom");
             setSymptoms(response.data.symptoms)
 
         }
@@ -172,8 +172,6 @@ export function Symtopms(){
                             onPress={handleSymptom}
                         />
                     </View>
-                    
-
                 </View>
         </SafeAreaView>
     )

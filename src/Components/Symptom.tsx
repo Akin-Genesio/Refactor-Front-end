@@ -1,4 +1,4 @@
-import CheckBox from '@react-native-community/checkbox';
+import Checkbox from 'expo-checkbox';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
@@ -34,11 +34,11 @@ export function Symptom({
                 ]}
         >
             <Text style={styles.label}>{title}</Text>
-            <CheckBox style={styles.checkbox}
+            <Checkbox style={styles.checkbox}
                 value={isSelected}
                 onValueChange={handleSelected}
-                boxType= 'circle'
-                onCheckColor= {colors.green}
+                color={isSelected ? colors.green : undefined}
+                
             />
         </View>
     )
