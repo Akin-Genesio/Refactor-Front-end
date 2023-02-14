@@ -15,6 +15,7 @@ import { FAQ, GreenButton, HeaderSimple, PatientStatus } from '../Components';
 import { useAuth } from '../contexts/Auth';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
+import { SafeAreaView } from '../Components/SafeAreaView';
 
 
 export function Profile(){
@@ -45,7 +46,7 @@ export function Profile(){
     }
 
     return(
-        <View  
+        <SafeAreaView  
             accessible={true}
             accessibilityLabel="Página de perfil"
         >
@@ -114,7 +115,7 @@ export function Profile(){
                 </View>
             </View>
 
-        </View>
+        </SafeAreaView>
     )
 }
 
