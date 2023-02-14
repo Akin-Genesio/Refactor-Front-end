@@ -38,7 +38,7 @@ export function Profile(){
         console.log("Signed: "+signed)
         */
 
-        //navigation.navigate('Symptoms')
+        navigation.navigate('Symptoms')
     }
 
     function handleConfig(){

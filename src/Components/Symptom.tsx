@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
-import{ StyleSheet, Text, TouchableOpacity, TouchableOpacityProps, View } from 'react-native'
 import CheckBox from '@react-native-community/checkbox';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-import colors from '../styles/colors'
-import fonts from '../styles/fonts'
-import { color } from 'react-native-reanimated';
+import colors from '../styles/colors';
+import fonts from '../styles/fonts';
 
 
 interface SymptopmProps{

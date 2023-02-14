@@ -227,7 +227,15 @@ export function Login(){
             )
         }catch(error){
             
-            
+            Alert.alert(
+                "Algo deu errado",
+                "Talvez senha errada",
+                [
+                    {
+                        text: "Ok",
+                    }
+                ]
+            )
         }
 
         return
