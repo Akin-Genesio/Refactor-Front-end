@@ -28,19 +28,21 @@ export function Symtopms(){
     const [symptoms, setSymptoms] = useState<SymptomsProps[]>([])
     const searchRef = useRef(null)
     const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([])
+
+    const [symptomsFilter, setSymptomsFilter] = useState<SymptomsProps[]>([])
+
     const navigation = useNavigation()
 
     
     useEffect(() => {
         async function fetchSymptoms(){
-            console.log("search: "+search)
-            const response = await api.get("/symptom", {params: {symptom: search}});
+            const response = await api.get("/symptom");
             setSymptoms(response.data.symptoms)
+            setSymptomsFilter(response.data.symptoms)
 
         }
         fetchSymptoms();
     },[])
-
 
     function handleProfile(){
         navigation.navigate('Profile')
@@ -57,8 +59,17 @@ export function Symtopms(){
     }
 
     function handleInputSearchChange(value: string){
-        setIsSearchFilled(!!value)
         setSearch(value)
+        if(value){
+            const newData = symptoms.filter(item => {
+                const itemData = String(item.symptom)? String(item.symptom).toLocaleLowerCase() : ''
+                const textData = value.toLocaleLowerCase()
+                return itemData.indexOf(textData) > -1;
+            })
+            setSymptomsFilter(newData)
+        }else{
+            setSymptomsFilter(symptoms)
+        }
         
     }
 
@@ -137,6 +148,7 @@ export function Symtopms(){
                             placeholder="Digite um sintoma"
                             style={styles.textSerch}
                             value={search}
+                            ref = {searchRef}
                             onBlur={handleInputSearchBlur}
                             onFocus={handleInputSearchFocus}
                             onChangeText={handleInputSearchChange}
@@ -155,7 +167,7 @@ export function Symtopms(){
                     </View>
                     <View style={styles.symptomsList}>
                     <FlatList
-                        data={symptoms}
+                        data={symptomsFilter}
                         keyExtractor = {(item: { symptom: any; }) => String(item.symptom)}
                         renderItem = {({item}) => (
                             <Symptom

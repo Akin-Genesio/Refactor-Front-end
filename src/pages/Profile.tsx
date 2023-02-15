@@ -1,5 +1,6 @@
 import { MaterialIcons } from '@expo/vector-icons';
-import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
 import {
     Dimensions, Image,
     StyleSheet,
@@ -8,14 +9,13 @@ import {
 
     View
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 import patientImg from '../assets/patientImg.png';
-import { FAQ, GreenButton, HeaderSimple, HeaderWithOutGoBack, PatientStatus } from '../Components';
+import { FAQ, GreenButton, HeaderWithOutGoBack, PatientStatus } from '../Components';
+import { SafeAreaView } from '../Components/SafeAreaView';
 import { useAuth } from '../contexts/Auth';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
-import { SafeAreaView } from '../Components/SafeAreaView';
 
 
 export function Profile(){
