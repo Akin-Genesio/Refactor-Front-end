@@ -2,13 +2,10 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import {
-    Dimensions,
-    StyleSheet,
+    Alert, Dimensions, FlatList, StyleSheet,
     Text,
     TextInput,
-    View,
-    FlatList,
-    Alert
+    View
 } from 'react-native';
 import { GreenButton, HeaderSimple, SafeAreaView, Symptom } from '../Components';
 import { useAuth } from '../contexts';
@@ -73,10 +70,6 @@ export function Symtopms(){
         
     }
 
-    function handleSeach(){
-        //console.log(search)
-    }
-
     function handleSymptomSelection(title: string){
         if(selectedSymptoms.includes(title)){
             setSelectedSymptoms(selectedSymptoms.filter((symptom) => {
@@ -90,37 +83,51 @@ export function Symtopms(){
     }
 
     async function handleSymptom(){
-        try{
-            await api.post("/symptomoccurrenceSeveral",{
-                patient_id: user?.id,
-                symptoms: selectedSymptoms
-            })
-            Alert.alert(
-                "Atualização concluida",
-                `Simtomas cadastrados: ${selectedSymptoms}`,
-                [
-                    {
-                        text: "Ok",
-                        onPress: () => (handleProfile())
-                    }
-                ]
-            )
-            console.log("Sintomas submetidos")
-        }catch(error){
-            /*
+        if(selectedSymptoms.length > 0){
+            try{
+                await api.post("/symptomoccurrenceSeveral",{
+                    patient_id: user?.id,
+                    symptoms: selectedSymptoms
+                })
+                Alert.alert(
+                    "Atualização concluida",
+                    `Simtomas cadastrados: ${selectedSymptoms}`,
+                    [
+                        {
+                            text: "Ok",
+                            onPress: () => (handleProfile())
+                        }
+                    ]
+                )
+                console.log("Sintomas submetidos")
+            }catch(error){
+                
+                Alert.alert(
+                    "Erro na atualização de sintomas",
+                    `${error.response.data.message}`,
+                    [
+                        {
+                            text: "Ok",
+                            onPress: () => (handleProfile())
+                        }
+                    ]
+                )
+                console.log(error.response.data.message);
+                
+            }
+        }
+        else{
             Alert.alert(
                 "Erro na atualização de sintomas",
-                `${error.response.data.message}`,
+                `Selecione ao menos um sintoma`,
                 [
                     {
-                        text: "Ok",
-                        onPress: () => (handleProfile())
+                        text: "Entendi"
                     }
                 ]
             )
-            console.log(error.response.data.message);
-            */
         }
+        
         
     }
 
@@ -162,7 +169,6 @@ export function Symtopms(){
                                 (isSearchFocused || isSearchFilled) && 
                                 {color: colors.blue}
                             ]}
-                            onPress={handleSeach} 
                             />
                     </View>
                     <View style={styles.symptomsList}>
