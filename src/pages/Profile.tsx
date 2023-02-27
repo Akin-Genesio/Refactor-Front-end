@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import patientImg from '../assets/patientImg.png';
-import { FAQ, GreenButton, HeaderWithOutGoBack, PatientStatus } from '../Components';
+import { FAQ, GreenButton, HeaderWithOutGoBack, PatientStatus, PopUpMenu } from '../Components';
 import { SafeAreaView } from '../Components/SafeAreaView';
 import { useAuth } from '../contexts/Auth';
 import colors from '../styles/colors';
@@ -57,13 +57,7 @@ export function Profile(){
                 style={styles.container}
                 accessible={true} 
             >
-                <MaterialIcons 
-                    style={styles.icons} 
-                    accessible={true} accessibilityLabel="Menu" 
-                    name="menu" size={24} 
-                    color="black"
-                    onPress={handleConfig} 
-                />
+                <PopUpMenu/>
                 <View
                     style={styles.bodyUp}
                     accessible={true} 
