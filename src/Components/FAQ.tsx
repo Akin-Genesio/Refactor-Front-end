@@ -41,13 +41,14 @@ const styles = StyleSheet.create({
         
     },
     question:{
-        fontFamily: fonts.generic,
+        fontFamily: fonts.warning,
         fontSize: 20
         
     },
     answer:{
         fontFamily: fonts.text,
-        fontSize: 15
+        fontSize: 15,
+        color: colors.gray,
     },
     questionBox:{
         padding: 10,
