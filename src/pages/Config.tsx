@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { TextInputMask } from 'react-native-masked-text';
 import {Picker} from '@react-native-picker/picker';
-import { HeaderWithOutMenu, SafeAreaView } from '../Components';
+import { HeaderSimple, HeaderWithOutMenu, PopUpMenu, SafeAreaView } from '../Components';
 import { BlueButton } from '../Components/BlueButton';
 import { useAuth } from '../contexts';
 import api from '../services/api';
@@ -610,14 +610,25 @@ export function Config(){
         >
             
             <ScrollView scrollEnabled = {true}>
-                <HeaderWithOutMenu
-                    titleScreen='Configurações'
-                />   
+                <HeaderSimple
+                    titleScreen = "Configurações"
+                />
+                <View style= {{backgroundColor: colors.white}}>
+                    <PopUpMenu
+                        screenName='Configurações'
+                    />
+                </View>
                 <KeyboardAvoidingView  
                     style={styles.container}
                     //behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
                 >                         
                         <View style={styles.container}>
+                            <View style={styles.bodyUp} accessible={true}>
+                                
+                                <View style={styles.textAPP} accessible={true}>
+                                    <Text style={styles.appName}>MoniPaEp</Text>
+                                </View>
+                            </View>
                             <View style={styles.warning}>
                                 <Text style={styles.warningText}>* Obrigatório </Text>
                             </View>
@@ -1193,6 +1204,20 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    bodyUp: {
+        width: '100%',
+        height: Dimensions.get('window').height * 0.15,
+        justifyContent: 'center',
+        paddingBottom: 15
+    },
+    appName:{
+        fontFamily: fonts.appName,
+        fontSize: 32,
+        color: colors.blue
+    },
+    textAPP: {
+        alignItems: 'center',
     },
     warning:{
         left: Dimensions.get('window').width * 0.33,

@@ -7,7 +7,7 @@ import {
     TextInput,
     View
 } from 'react-native';
-import { GreenButton, HeaderSimple, SafeAreaView, Symptom } from '../Components';
+import { GreenButton, HeaderSimple, PopUpMenu, SafeAreaView, Symptom } from '../Components';
 import { useAuth } from '../contexts';
 import api from '../services/api';
 import colors from '../styles/colors';
@@ -140,7 +140,9 @@ export function Symtopms(){
             /> 
                 <View style={styles.container}>
                     <View style={styles.bodyUp} accessible={true}>
-                        <MaterialIcons style={styles.icons} name="menu" size={24} color="black" />
+                        <PopUpMenu
+                            screenName='Atualizar Sintomas'
+                        />
                         <View style={styles.textAPP} accessible={true}>
                             <Text style={styles.appName}>MoniPaEp</Text>
                         </View>
