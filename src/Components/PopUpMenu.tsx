@@ -34,7 +34,7 @@ export function PopUpMenu({screenName}: PopUpMenuProps){
         {
             title: 'Perguntas Frequentes',
             icon: 'chat',
-            action: () => Alert.alert('FAQ')
+            action: () => navigation.navigate('FAQ')
         },
         {
             title: 'Configurações',
