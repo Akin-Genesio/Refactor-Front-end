@@ -8,7 +8,7 @@ interface GreenButtonProps extends TouchableOpacityProps{
     title: string;
 }
 
-export function FAQ({title, ...rest}: GreenButtonProps){
+export function FAQButton({title, ...rest}: GreenButtonProps){
     return(
         <TouchableOpacity style={styles.container}>
             <Text 

@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 
 import patientImg from '../assets/patientImg.png';
-import { FAQ, GreenButton, HeaderWithOutGoBack, PatientStatus, PopUpMenu } from '../Components';
+import { FAQButton, GreenButton, HeaderWithOutGoBack, PatientStatus, PopUpMenu } from '../Components';
 import { SafeAreaView } from '../Components/SafeAreaView';
 import { useAuth } from '../contexts/Auth';
 import colors from '../styles/colors';
@@ -102,7 +102,7 @@ export function Profile(){
                     <PatientStatus
                         title={user?.status? user.status : ''}
                     />
-                    <FAQ
+                    <FAQButton
                         accessible={true}
                         accessibilityLabel="Botão. Clique para ir para a página de perguntas frequentes"
                         title = "Perguntas Frequentes"
@@ -121,6 +121,7 @@ const styles = StyleSheet.create({
     },
     bodyUp:{
         alignItems: 'center',
+        //paddingLeft: 10
     },
     icons:{
         padding: 20
@@ -134,8 +135,7 @@ const styles = StyleSheet.create({
         //marginTop: 40,
         width: Dimensions.get('window').width * 0.9,
         padding: 20,
-        
-        
+        paddingLeft: 40    
     },
     text:{
         fontSize: 20,
