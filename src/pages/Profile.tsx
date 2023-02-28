@@ -57,7 +57,9 @@ export function Profile(){
                 style={styles.container}
                 accessible={true} 
             >
-                <PopUpMenu/>
+                <PopUpMenu
+                    screenName={"Perfil"}
+                />
                 <View
                     style={styles.bodyUp}
                     accessible={true} 
