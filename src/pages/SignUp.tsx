@@ -601,8 +601,6 @@ export function SignUp(){
                 }
             ]
         )
-        console.log("Seria feito o cadastro")
-
         return
     }
 

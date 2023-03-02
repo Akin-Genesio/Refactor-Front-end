@@ -1,6 +1,8 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { Dimensions, KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Dimensions, KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
 import { BlueButton, HeaderSimple, PopUpMenu, SafeAreaView } from '../Components';
+import api from '../services/api';
 
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -9,6 +11,9 @@ export function FAQNewQuestion(){
     const[isQuestionFocused, setIsQuestionFocused] = useState(false)
     const [isQuestionFilled, setIsQuestionFilled] = useState(false)
     const [question, setQuestion] = useState<string>('')
+
+    //Creating const for navigation
+    const navigation = useNavigation()
 
     //Functions handle for Question
     function handleInputQuestionBlur(){
@@ -25,8 +30,36 @@ export function FAQNewQuestion(){
         setQuestion(value)
     }
 
-    function handleQuestion(){
-        console.log("Send the question")
+    function handleProfile(){
+        navigation.navigate('Profile')
+    }
+
+    async function handleQuestion(){
+        try{
+            const response = await api.post("/faqsuggestions",{
+                question: question
+            })
+            Alert.alert(
+                "Questão Enviada",
+                "Sua pergunta foi enviada com sucesso e será analisada",
+                [
+                    {
+                        text: "Ok",
+                        onPress: () => (handleProfile())
+                    }
+                ]
+            )
+        }catch(error){
+            Alert.alert(
+                "Erro ao enviar a pergunta",
+                error.response.data.message,
+                [
+                    {
+                        text: "Ok"
+                    }
+                ]
+            )
+        }
     }
     return(
         <SafeAreaView
