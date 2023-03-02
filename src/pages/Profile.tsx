@@ -41,8 +41,8 @@ export function Profile(){
         navigation.navigate('Symptoms')
     }
 
-    function handleConfig(){
-        navigation.navigate('Config')
+    function handleFAQ(){
+        navigation.navigate('FAQ')
     }
 
     return(
@@ -106,7 +106,7 @@ export function Profile(){
                         accessible={true}
                         accessibilityLabel="Botão. Clique para ir para a página de perguntas frequentes"
                         title = "Perguntas Frequentes"
-                        onPress={signOut}
+                        onPress={handleFAQ}
                     />
                 </View>
             </View>

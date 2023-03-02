@@ -7,7 +7,7 @@ import {
     TextInput,
     View
 } from 'react-native';
-import { FAQ, GreenButton, HeaderSimple, PopUpMenu, SafeAreaView, Symptom } from '../Components';
+import { BlueButton, FAQ, GreenButton, HeaderSimple, PopUpMenu, SafeAreaView, Symptom } from '../Components';
 import { useAuth } from '../contexts';
 import api from '../services/api';
 import colors from '../styles/colors';
@@ -62,8 +62,11 @@ export function FAQs(){
             setFaqFilter(newData)
         }else{
             setFaqFilter(faq)
-        }
-        
+        }   
+    }
+
+    function handleQuestion(){
+        navigation.navigate('NewQuestion')
     }
 
 
@@ -120,6 +123,13 @@ export function FAQs(){
                             />
                         )}
                     />
+                    </View>
+                    <View style={styles.bottom}>
+                        <BlueButton                            
+                            accessibilityLabel="Botão. Clique para enviar uma pergunta"
+                            title="Enviar uma Pergunta"
+                            onPress={handleQuestion}
+                        />
                     </View>
                 </View>
         </SafeAreaView>
@@ -179,8 +189,6 @@ const styles = StyleSheet.create({
         //marginTop: 40,
         width: Dimensions.get('window').width * 0.9,
         paddingBottom: 20,
-        paddingTop: 30,
-        
-        
+        paddingTop: 30,   
     }
 })

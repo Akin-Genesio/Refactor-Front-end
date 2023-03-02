@@ -1,7 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack'
 import colors from '../styles/colors';
-import { Config, FAQs, Login, Profile, SignUp, Symtopms } from '../pages';
+import { Config, FAQNewQuestion, FAQs, Login, Profile, SignUp, Symtopms } from '../pages';
 
 const stackRoutes = createStackNavigator()
 
@@ -41,6 +41,10 @@ const AppRoutes: React.FC = () => (
         <stackRoutes.Screen
             name = "FAQs"
             component={FAQs}
+        />
+        <stackRoutes.Screen
+            name = "NewQuestion"
+            component={FAQNewQuestion}
         />
     </stackRoutes.Navigator>
 )
