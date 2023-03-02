@@ -2,7 +2,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import {
-    Alert, Dimensions, FlatList, StyleSheet,
+    Alert, Dimensions, FlatList, ScrollView, StyleSheet,
     Text,
     TextInput,
     View
@@ -135,67 +135,66 @@ export function Symtopms(){
         <SafeAreaView 
             accessible={true}
         >
+
             <HeaderSimple
                 titleScreen = "Atualizar Sintomas"
             /> 
-                <View style={styles.container}>
-                    <View style={styles.bodyUp} accessible={true}>
-                        <PopUpMenu
-                            screenName='Atualizar Sintomas'
-                        />
-                        <View style={styles.textAPP} accessible={true}>
-                            <Text style={styles.appName}>MoniPaEp</Text>
-                        </View>
-                    </View>
-                    <View style={[
-                            styles.search,
-                            (isSearchFocused || isSearchFilled) && 
-                            {borderColor: colors.blue}
-                        ]}>
-                        <TextInput
-                            accessible={true}
-                            placeholder="Digite um sintoma"
-                            style={styles.textSerch}
-                            value={search}
-                            ref = {searchRef}
-                            onBlur={handleInputSearchBlur}
-                            onFocus={handleInputSearchFocus}
-                            onChangeText={handleInputSearchChange}
-                        />
-                        <MaterialIcons 
-                            name="search" 
-                            size={24} 
-                            color="gray"
-                            style={[
-                                styles.Icon,
-                                (isSearchFocused || isSearchFilled) && 
-                                {color: colors.blue}
-                            ]}
-                            />
-                    </View>
-                    <View style={styles.symptomsList}>
-                    <FlatList
-                        data={symptomsFilter}
-                        keyExtractor = {(item: { symptom: any; }) => String(item.symptom)}
-                        renderItem = {({item}) => (
-                            <Symptom
-                            parentHandleSelection = {handleSymptomSelection}
-                            title = {item.symptom}
-                        />
-                        )}
+            <View style={styles.container}>
+                <View style={styles.bodyUp} accessible={true}>
+                    <PopUpMenu
+                        screenName='Atualizar Sintomas'
                     />
+                    <View style={styles.textAPP} accessible={true}>
+                        <Text style={styles.appName}>MoniPaEp</Text>
                     </View>
-                    <View style={styles.bottom}>
-                        <GreenButton
-                            
-                            accessibilityLabel="Botão. Clique para ir para a página de atualizar sintomas"
-                            title="Atualizar Sintomas"
-                            onPress={handleSymptom}
-                        />
-                    </View>
-                    
-
                 </View>
+                <View style={[
+                        styles.search,
+                        (isSearchFocused || isSearchFilled) && 
+                        {borderColor: colors.blue}
+                    ]}>
+                    <TextInput
+                        accessible={true}
+                        placeholder="Digite um sintoma"
+                        style={styles.textSerch}
+                        value={search}
+                        ref = {searchRef}
+                        onBlur={handleInputSearchBlur}
+                        onFocus={handleInputSearchFocus}
+                        onChangeText={handleInputSearchChange}
+                    />
+                    <MaterialIcons 
+                        name="search" 
+                        size={24} 
+                        color="gray"
+                        style={[
+                            styles.Icon,
+                            (isSearchFocused || isSearchFilled) && 
+                            {color: colors.blue}
+                        ]}
+                        />
+                </View>
+                <View style={styles.symptomsList}>
+                <FlatList
+                    data={symptomsFilter}
+                    keyExtractor = {(item: { symptom: any; }) => String(item.symptom)}
+                    renderItem = {({item}) => (
+                        <Symptom
+                        parentHandleSelection = {handleSymptomSelection}
+                        title = {item.symptom}
+                    />
+                    )}
+                />
+                </View>
+                <View style={styles.bottom}>
+                    <GreenButton
+                        
+                        accessibilityLabel="Botão. Clique para ir para a página de atualizar sintomas"
+                        title="Atualizar Sintomas"
+                        onPress={handleSymptom}
+                    />
+                </View>
+            </View>
         </SafeAreaView>
     )
 }
@@ -246,6 +245,7 @@ const styles = StyleSheet.create({
     },
     symptomsList: {
         width: Dimensions.get('window').width * 0.8,
+        height: Dimensions.get('window').height * 0.6,
         paddingTop: 20,
         justifyContent: 'center'
     },

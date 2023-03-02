@@ -35,24 +35,37 @@ export function FAQNewQuestion(){
     }
 
     async function handleQuestion(){
-        try{
-            const response = await api.post("/faqsuggestions",{
-                question: question
-            })
-            Alert.alert(
-                "Questão Enviada",
-                "Sua pergunta foi enviada com sucesso e será analisada",
-                [
-                    {
-                        text: "Ok",
-                        onPress: () => (handleProfile())
-                    }
-                ]
-            )
-        }catch(error){
+        if(question != ''){
+            try{
+                const response = await api.post("/faqsuggestions",{
+                    question: question
+                })
+                Alert.alert(
+                    "Questão Enviada",
+                    "Sua pergunta foi enviada com sucesso e será analisada",
+                    [
+                        {
+                            text: "Ok",
+                            onPress: () => (handleProfile())
+                        }
+                    ]
+                )
+            }catch(error){
+                Alert.alert(
+                    "Erro ao enviar a pergunta",
+                    error.response.data.message,
+                    [
+                        {
+                            text: "Ok"
+                        }
+                    ]
+                )
+            }
+        }
+        else{
             Alert.alert(
                 "Erro ao enviar a pergunta",
-                error.response.data.message,
+                "Por favor digite uma pergunta",
                 [
                     {
                         text: "Ok"
@@ -60,6 +73,7 @@ export function FAQNewQuestion(){
                 ]
             )
         }
+        
     }
     return(
         <SafeAreaView
@@ -81,6 +95,7 @@ export function FAQNewQuestion(){
                 </View>
                 <View
                     accessible = {true}
+                    style= {styles.boddy}
                 >
                     <View 
                         style={styles.textView}
@@ -136,6 +151,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingBottom: 15
     },
+    boddy:{
+        justifyContent: 'center',
+        alignItems: 'center',
+        
+    },
     textView: {
         padding: 20
     },
@@ -146,10 +166,10 @@ const styles = StyleSheet.create({
     inputText:{
         //alignItems: 'center',
         height: Dimensions.get('window').height * 0.3,
-        width: Dimensions.get('window').height * 0.5,
+        width: Dimensions.get('window').width * 0.9,
         borderWidth: 1,
         borderColor: colors.black,
-        padding: 20
+        padding: 20,
     },
     input:{
         fontFamily: fonts.text,
@@ -165,8 +185,9 @@ const styles = StyleSheet.create({
     },
     bottom:{
         //marginTop: 40,
-        width: Dimensions.get('window').width * 0.9,
+        width: Dimensions.get('window').width * 0.8,
         paddingBottom: 20,
-        paddingTop: 30,   
+        paddingTop: Dimensions.get('window').height * 0.3,   
+
     }
 })

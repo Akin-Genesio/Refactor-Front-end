@@ -5,7 +5,9 @@ import {
     Alert, Dimensions, FlatList, StyleSheet,
     Text,
     TextInput,
-    View
+    ScrollView,
+    View,
+    KeyboardAvoidingView
 } from 'react-native';
 import { BlueButton, FAQ, GreenButton, HeaderSimple, PopUpMenu, SafeAreaView, Symptom } from '../Components';
 import { useAuth } from '../contexts';
@@ -73,65 +75,66 @@ export function FAQs(){
     return(
         <SafeAreaView 
             accessible={true}
+            accessibilityLabel="Página de Perguntas frequentes"
         >
             <HeaderSimple
                 titleScreen = "Perguntas Frequents"
             /> 
-                <View style={styles.container}>
-                    <View style={styles.bodyUp} accessible={true}>
-                        <PopUpMenu
-                            screenName='Perguntas Frequentes'
-                        />
-                        <View style={styles.textAPP} accessible={true}>
-                            <Text style={styles.appName}>MoniPaEp</Text>
-                        </View>
-                    </View>
-                    <View style={[
-                            styles.search,
-                            (isSearchFocused || isSearchFilled) && 
-                            {borderColor: colors.blue}
-                        ]}>
-                        <TextInput
-                            accessible={true}
-                            placeholder="Digite uma pergunta"
-                            style={styles.textSerch}
-                            value={search}
-                            ref = {searchRef}
-                            onBlur={handleInputSearchBlur}
-                            onFocus={handleInputSearchFocus}
-                            onChangeText={handleInputSearchChange}
-                        />
-                        <MaterialIcons 
-                            name="search" 
-                            size={24} 
-                            color="gray"
-                            style={[
-                                styles.Icon,
-                                (isSearchFocused || isSearchFilled) && 
-                                {color: colors.blue}
-                            ]}
-                            />
-                    </View>
-                    <View style={styles.symptomsList}>
-                    <FlatList
-                        data={faqFilter}
-                        keyExtractor = {(item: { question: any; }) => String(item.question)}
-                        renderItem = {({item}) => (
-                            <FAQ
-                                question={item.question}
-                                answer={item.answer}
-                            />
-                        )}
+            <KeyboardAvoidingView style={styles.container}>
+                <View style={styles.bodyUp} accessible={true}>
+                    <PopUpMenu
+                        screenName='Perguntas Frequentes'
                     />
-                    </View>
-                    <View style={styles.bottom}>
-                        <BlueButton                            
-                            accessibilityLabel="Botão. Clique para enviar uma pergunta"
-                            title="Enviar uma Pergunta"
-                            onPress={handleQuestion}
-                        />
+                    <View style={styles.textAPP} accessible={true}>
+                        <Text style={styles.appName}>MoniPaEp</Text>
                     </View>
                 </View>
+                <View style={[
+                        styles.search,
+                        (isSearchFocused || isSearchFilled) && 
+                        {borderColor: colors.blue}
+                    ]}>
+                    <TextInput
+                        accessible={true}
+                        placeholder="Digite uma pergunta"
+                        style={styles.textSerch}
+                        value={search}
+                        ref = {searchRef}
+                        onBlur={handleInputSearchBlur}
+                        onFocus={handleInputSearchFocus}
+                        onChangeText={handleInputSearchChange}
+                    />
+                    <MaterialIcons 
+                        name="search" 
+                        size={24} 
+                        color="gray"
+                        style={[
+                            styles.Icon,
+                            (isSearchFocused || isSearchFilled) && 
+                            {color: colors.blue}
+                        ]}
+                        />
+                </View>
+                <View style={styles.FAQList}>
+                <FlatList
+                    data={faqFilter}
+                    keyExtractor = {(item: { question: any; }) => String(item.question)}
+                    renderItem = {({item}) => (
+                        <FAQ
+                            question={item.question}
+                            answer={item.answer}
+                        />
+                    )}
+                />
+                </View>
+                <View style={styles.bottom}>
+                    <BlueButton
+                        accessibilityLabel="Botão. Clique para enviar uma pergunta"
+                        title="Enviar uma Pergunta"
+                        onPress={handleQuestion}
+                    />
+                </View>
+            </KeyboardAvoidingView>
         </SafeAreaView>
     )
 }
@@ -180,8 +183,9 @@ const styles = StyleSheet.create({
     Icon:{
         padding: 10,
     },
-    symptomsList: {
+    FAQList: {
         width: Dimensions.get('window').width * 0.8,
+        height: Dimensions.get('window').height * 0.6,
         paddingTop: 20,
         justifyContent: 'center'
     },
