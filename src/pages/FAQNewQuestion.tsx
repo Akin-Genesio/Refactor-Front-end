@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { Alert, Dimensions, KeyboardAvoidingView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { Alert, Dimensions, Keyboard, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableWithoutFeedback, View } from 'react-native';
 import { BlueButton, HeaderSimple, PopUpMenu, SafeAreaView } from '../Components';
 import api from '../services/api';
 
@@ -82,59 +82,63 @@ export function FAQNewQuestion(){
             <HeaderSimple
                 titleScreen = "Perguntas Frequents"
             />
-            <View
-                style= {styles.body}
-            >
-                <View style={styles.bodyUp} accessible={true}>
-                    <PopUpMenu
-                        screenName='Nova Pergunta'
-                    />
-                    <View style={styles.textAPP} accessible={true}>
-                        <Text style={styles.appName}>MoniPaEp</Text>
-                    </View>
-                </View>
-                <View
-                    accessible = {true}
-                    style= {styles.boddy}
+            <TouchableWithoutFeedback
+                    onPress={Keyboard.dismiss}
                 >
-                    <View 
-                        style={styles.textView}
-                    >
-                        <Text style={styles.text} accessible={true}>
-                            Insira sua Pergunta abaixo
-                        </Text>
+                <View
+                    style= {styles.body}
+                >
+                    <View style={styles.bodyUp} accessible={true}>
+                        <PopUpMenu
+                            screenName='Nova Pergunta'
+                        />
+                        <View style={styles.textAPP} accessible={true}>
+                            <Text style={styles.appName}>MoniPaEp</Text>
+                        </View>
                     </View>
                     <View
-                        style={[
-                            styles.inputText,
-                            (isQuestionFocused || isQuestionFilled) && 
-                            {borderColor: colors.blue}
-                        ]}
-                        accessible={true}
+                        accessible = {true}
+                        style= {styles.boddy}
                     >
-                        <TextInput
+                        <View 
+                            style={styles.textView}
+                        >
+                            <Text style={styles.text} accessible={true}>
+                                Insira sua Pergunta abaixo
+                            </Text>
+                        </View>
+                        <View
+                            style={[
+                                styles.inputText,
+                                (isQuestionFocused || isQuestionFilled) && 
+                                {borderColor: colors.blue}
+                            ]}
                             accessible={true}
-                            placeholder="Digite sua Pergunta"
-                            style={styles.input}
-                            value = {question}
-                            
-                            onBlur={handleInputQuestionBlur}
-                            onFocus = {handleInputQuestionFocus}
-                            onChangeText = {handleInputQuestionChange}
-                        />
+                        >
+                            <TextInput
+                                accessible={true}
+                                placeholder="Digite sua Pergunta"
+                                style={styles.input}
+                                value = {question}
+                                
+                                onBlur={handleInputQuestionBlur}
+                                onFocus = {handleInputQuestionFocus}
+                                onChangeText = {handleInputQuestionChange}
+                            />
+                        </View>
+                    </View>
+                    <View
+                        accessible={true}
+                        style={styles.bottom}
+                    >
+                        <BlueButton                            
+                                accessibilityLabel="Botão. Clique para enviar a pergunta"
+                                title="Enviar a Pergunta"
+                                onPress={handleQuestion}
+                            />
                     </View>
                 </View>
-                <View
-                    accessible={true}
-                    style={styles.bottom}
-                >
-                    <BlueButton                            
-                            accessibilityLabel="Botão. Clique para enviar a pergunta"
-                            title="Enviar a Pergunta"
-                            onPress={handleQuestion}
-                        />
-                </View>
-            </View>
+                </TouchableWithoutFeedback>
         </SafeAreaView>
     )
 }
@@ -168,8 +172,10 @@ const styles = StyleSheet.create({
         height: Dimensions.get('window').height * 0.3,
         width: Dimensions.get('window').width * 0.9,
         borderWidth: 1,
-        borderColor: colors.black,
-        padding: 20,
+        borderColor: colors.white,
+        padding: 5,
+        borderRadius: 8,
+        backgroundColor: colors.gray_light1
     },
     input:{
         fontFamily: fonts.text,
