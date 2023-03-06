@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     },
     SymptomList: {
         width: Dimensions.get('window').width * 0.8,
-        height: Dimensions.get('window').height * 0.6,
+        height: Dimensions.get('window').height * 0.68,
         paddingTop: 20,
         justifyContent: 'center'
     },

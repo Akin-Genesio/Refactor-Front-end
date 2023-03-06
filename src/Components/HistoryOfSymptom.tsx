@@ -27,7 +27,7 @@ export function HistoryOfSymptom({
                 <Text style={styles.date}>Enviado em: {registered_date}</Text>
             </View> 
             <View style={styles.symptomsBox}>
-                <Text style={{fontFamily: fonts.warning, fontSize: 10}}>Symptoms: </Text>
+                <Text style={{fontFamily: fonts.warning, fontSize: 15}}>Symptoms: </Text>
                 <Text style={styles.symptoms}>{symptom_name}</Text>
             </View>
                       
@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
         
     },
     symptoms:{
-        fontFamily: fonts.warning,
-        fontSize: 20,
+        fontFamily: fonts.text,
+        fontSize: 15,
         
     },
     date:{
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     symptomsBox:{
         padding: 10,
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        //justifyContent: 'space-between'
     },
     dateBox:{
         padding: 10,
