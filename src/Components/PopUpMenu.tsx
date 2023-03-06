@@ -42,6 +42,12 @@ export function PopUpMenu({screenName}: PopUpMenuProps){
             action: () => navigation.navigate('Config')
         },
         {
+            title: 'Histórico de Sintomas',
+            icon: 'settings',
+            action: () => navigation.navigate('SymptomsHistory')
+        },
+
+        {
             title: 'Sair',
             icon: 'logout',
             action: () => signOut()
