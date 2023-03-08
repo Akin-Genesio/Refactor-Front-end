@@ -243,7 +243,10 @@ export function Login(){
     
     function handleSignUp(){
         navigation.navigate('SignUP')
+    }
 
+    function handleFAQ(){
+        navigation.navigate('FAQsOpen')
     }
 
     return(
@@ -355,6 +358,16 @@ export function Login(){
                                         <Text style={styles.textLink}>Cadastre-se</Text>
                                     </TouchableOpacity>
                                 </View>
+                                <View style={styles.textAndLink}>
+                                    <Text style={styles.text}>Consulte as  </Text>
+                                    <TouchableOpacity
+                                        accessible={true}
+                                        accessibilityLabel= "Botão. Clique para consultar as perguntas frequentes"
+                                        onPress={handleFAQ}
+                                    >
+                                        <Text style={styles.textLink}>Perguntas frequentes</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                         </View>
                     </TouchableWithoutFeedback>
@@ -437,7 +450,7 @@ const styles = StyleSheet.create({
     },
     textAndLink:{
         flexDirection: 'row',
-        padding: 70
+        paddingTop: 30
     },
     text:{
         fontFamily: fonts.generic,
