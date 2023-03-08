@@ -24,10 +24,12 @@ export function HistoryOfSymptom({
             style={styles.container}
         >
             <View style={styles.dateBox}>
-                <Text style={styles.date}>Enviado em: {registered_date}</Text>
+                <Text style={styles.date}>Enviado em: {registered_date.split('T')[0]} {registered_date.split('T')[1].split('.')[0]} 
+                    
+                </Text>
             </View> 
             <View style={styles.symptomsBox}>
-                <Text style={{fontFamily: fonts.warning, fontSize: 15}}>Symptoms: </Text>
+                <Text style={{fontFamily: fonts.warning, fontSize: 15}}>Sintoma: </Text>
                 <Text style={styles.symptoms}>{symptom_name}</Text>
             </View>
                       

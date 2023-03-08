@@ -43,7 +43,7 @@ export function PopUpMenu({screenName}: PopUpMenuProps){
         },
         {
             title: 'Histórico de Sintomas',
-            icon: 'settings',
+            icon: 'article',
             action: () => navigation.navigate('SymptomsHistory')
         },
 

@@ -50,7 +50,7 @@ export function HistoryOfSymptoms(){
             <View style={styles.container}>
                 <View style={styles.bodyUp} accessible={true}>
                     <PopUpMenu
-                        screenName='Historico de Sintomas'
+                        screenName='Histórico de Sintomas'
                     />
                     <View style={styles.textAPP} accessible={true}>
                         <Text style={styles.appName}>MoniPaEp</Text>
