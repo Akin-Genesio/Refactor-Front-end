@@ -37,16 +37,15 @@ export function PopUpMenu({screenName}: PopUpMenuProps){
             action: () => navigation.navigate('FAQ')
         },
         {
-            title: 'Configurações',
-            icon: 'settings',
-            action: () => navigation.navigate('Config')
-        },
-        {
             title: 'Histórico de Sintomas',
             icon: 'article',
             action: () => navigation.navigate('SymptomsHistory')
         },
-
+        {
+            title: 'Configurações',
+            icon: 'settings',
+            action: () => navigation.navigate('Config')
+        },
         {
             title: 'Sair',
             icon: 'logout',
