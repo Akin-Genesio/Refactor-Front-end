@@ -1,6 +1,6 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { FAQsOpen, Login, SignUp } from '../pages';
+import { AboutTheApp, FAQsOpen, Login, SignUp } from '../pages';
 const AuthStack = createStackNavigator()
 
 const AuthRoutes: React.FC = () => (
@@ -8,6 +8,7 @@ const AuthRoutes: React.FC = () => (
         <AuthStack.Screen name = "Login" component ={Login}/>
         <AuthStack.Screen name = "SignUP" component ={SignUp}/>
         <AuthStack.Screen name = "FAQsOpen" component ={FAQsOpen}/>
+        <AuthStack.Screen name = "About" component ={AboutTheApp}/>
         
         
     </AuthStack.Navigator>

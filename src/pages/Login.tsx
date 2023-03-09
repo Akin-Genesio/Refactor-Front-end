@@ -249,13 +249,17 @@ export function Login(){
         navigation.navigate('FAQsOpen')
     }
 
+    function handleAbout(){
+        navigation.navigate('About')
+    }
+
     return(
         <SafeAreaView 
             accessible={true}
             accessibilityLabel="Página de Login, insira seus dados para entrar na sua conta"
         >
             <KeyboardAvoidingView  
-                style={styles.container}
+                
                 //behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
             >
                 <TouchableWithoutFeedback
@@ -368,6 +372,16 @@ export function Login(){
                                         <Text style={styles.textLink}>Perguntas frequentes</Text>
                                     </TouchableOpacity>
                                 </View>
+                                <View style={styles.textAndLink}>
+                                    <Text style={styles.text}>Duúvidas sobre o app?  </Text>
+                                    <TouchableOpacity
+                                        accessible={true}
+                                        accessibilityLabel= "Botão. Clique para consultar ter acesso a informações sobre o app"
+                                        onPress={handleAbout}
+                                    >
+                                        <Text style={styles.textLink}>Sobre o App</Text>
+                                    </TouchableOpacity>
+                                </View>
                             </View>
                         </View>
                     </TouchableWithoutFeedback>
@@ -391,6 +405,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: Dimensions.get('window').height * 0.03,
+        height: Dimensions.get('window').height * 0.8
     },
     welcome:{
         fontFamily: fonts.welcome,
@@ -461,6 +476,7 @@ const styles = StyleSheet.create({
         //marginTop: 40,
         width: Dimensions.get('window').width * 0.9,
         padding: 20,
+        paddingBottom: 3
     }
    
   });
