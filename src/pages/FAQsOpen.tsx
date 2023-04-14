@@ -2,15 +2,11 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useRef, useState } from 'react';
 import {
-    Alert, Dimensions, FlatList, StyleSheet,
+    Alert, Dimensions, FlatList, KeyboardAvoidingView, StyleSheet,
     Text,
-    TextInput,
-    ScrollView,
-    View,
-    KeyboardAvoidingView
+    TextInput, View
 } from 'react-native';
-import { BlueButton, FAQ, GreenButton, HeaderSimple, PopUpMenu, SafeAreaView, Symptom } from '../Components';
-import { useAuth } from '../contexts';
+import { BlueButton, FAQ, HeaderSimple, SafeAreaView } from '../Components';
 import api from '../services/api';
 import colors from '../styles/colors';
 import fonts from '../styles/fonts';
@@ -95,9 +91,6 @@ export function FAQsOpen(){
             /> 
             <KeyboardAvoidingView style={styles.container}>
                 <View style={styles.bodyUp} accessible={true}>
-                    <PopUpMenu
-                        screenName='Perguntas Frequentes'
-                    />
                     <View style={styles.textAPP} accessible={true}>
                         <Text style={styles.appName}>MoniPaEp</Text>
                     </View>
