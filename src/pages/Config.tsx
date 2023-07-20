@@ -1119,7 +1119,7 @@ export function Config(){
                                         setGender(itemValue)
                                     }>
                                     <Picker.Item label="Sexo biológico..." value={null}/>
-                                    <Picker.Item label="masculino" value="masculino"/>
+                                    <Picker.Item label="Masculino" value="masculino"/>
                                     <Picker.Item label="Feminino" value="feminino"/>
                                 </Picker>
                             </View>

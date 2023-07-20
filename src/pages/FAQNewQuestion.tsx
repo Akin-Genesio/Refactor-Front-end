@@ -104,7 +104,7 @@ export function FAQNewQuestion(){
                             style={styles.textView}
                         >
                             <Text style={styles.text} accessible={true}>
-                                Insira sua Pergunta abaixo
+                                Insira sua pergunta abaixo
                             </Text>
                         </View>
                         <View
